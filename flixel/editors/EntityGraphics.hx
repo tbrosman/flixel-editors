@@ -7,7 +7,6 @@ import flixel.addons.ui.StrIdLabel;
 import flixel.addons.ui.U;
 import flixel.util.FlxArrayUtil;
 import flixel.util.FlxColor;
-import flixel.util.FlxColorUtil;
 import haxe.xml.Fast;
 import openfl.Assets;
 
@@ -263,8 +262,8 @@ class EntityGraphics
 						var b:BitmapData = Assets.getBitmapData(U.gfx(asset_src),false);	//don't cache it, just peek at it
 						if (b != null) {
 							for (py in 0...b.height) {
-								var pix_color:Int = b.getPixel32(0, py);
-								if (FlxColorUtil.getAlpha(pix_color) == 0) {				//break on first 100% transparent pixel
+								var pix_color = FlxColor.fromInt(b.getPixel32(0, py));
+								if (pix_color.alpha == 0) {				//break on first 100% transparent pixel
 									break;
 								}
 								s.list_original_pixel_colors.push(pix_color);
@@ -568,13 +567,13 @@ class EntityGraphics
 		if (Trans == null) {
 			Trans = new ColorTransform();
 		}
-		var red:Float = FlxColorUtil.getRed(Color);
-		var green:Float = FlxColorUtil.getGreen(Color);
-		var blue:Float = FlxColorUtil.getBlue(Color);
-		Trans.redMultiplier = red / 255;
-		Trans.greenMultiplier = green / 255;
-		Trans.blueMultiplier = blue / 255;
-		Trans.alphaMultiplier = Alpha;
+        var color = FlxColor.fromInt(Color);
+        color.alphaFloat = Alpha;
+
+		Trans.redMultiplier = color.redFloat;
+		Trans.greenMultiplier = color.greenFloat;
+		Trans.blueMultiplier = color.blueFloat;
+		Trans.alphaMultiplier = color.alphaFloat;
 		return Trans;
 	}
 	

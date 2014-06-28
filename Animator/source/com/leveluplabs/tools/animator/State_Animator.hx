@@ -33,9 +33,9 @@ import flixel.group.FlxGroup;
 import flixel.group.FlxSpriteGroup;
 import flixel.text.FlxText;
 import flixel.util.FlxColor;
-import flixel.util.FlxRect;
+import flixel.math.FlxRect;
 import flixel.util.FlxTimer;
-import flixel.util.FlxVector;
+import flixel.math.FlxVector;
 import haxe.xml.Printer;
 #if sys
 	import systools.Dialogs;
@@ -410,7 +410,7 @@ class State_Animator extends FlxUIState
 		group_sweet.id = "sweets";
 		
 		label_curr_frame = new FlxUIText(5, 5, 200, "Select an animation frame!");
-		label_curr_frame.setBorderStyle(FlxText.BORDER_OUTLINE_FAST, 0);
+		label_curr_frame.setBorderStyle(FlxTextBorderStyle.OUTLINE_FAST, 0);
 		group_sweet.add(label_curr_frame);
 		
 		check_sweet = new FlxUICheckBox(5, label_curr_frame.y+20,null,null,"Has Sweet Spot");
@@ -429,13 +429,13 @@ class State_Animator extends FlxUIState
 		
 		
 		var label = new FlxUIText(stepper_sweet_x.x - 20, stepper_sweet_x.y, 20, "X:");
-		label.setBorderStyle(FlxText.BORDER_OUTLINE_FAST, 0);
+		label.setBorderStyle(FlxTextBorderStyle.OUTLINE_FAST, 0);
 		group_sweet.add(label);
 		label = new FlxUIText(stepper_sweet_y.x - 20, stepper_sweet_y.y, 20, "Y:");
-		label.setBorderStyle(FlxText.BORDER_OUTLINE_FAST, 0);
+		label.setBorderStyle(FlxTextBorderStyle.OUTLINE_FAST, 0);
 		group_sweet.add(label);
 		label = new FlxUIText(input_sweet_name.x - 40, input_sweet_name.y, 40, "Name:");
-		label.setBorderStyle(FlxText.BORDER_OUTLINE_FAST, 0);
+		label.setBorderStyle(FlxTextBorderStyle.OUTLINE_FAST, 0);
 		group_sweet.add(label);
 		
 		tab_menu.addGroup(group_sweet);
@@ -608,7 +608,7 @@ class State_Animator extends FlxUIState
 						label.y = yy;
 						label.text = feature.name.toUpperCase();
 						label.color = 0xFFFFFF;
-						label.setBorderStyle(FlxText.BORDER_OUTLINE_FAST);
+						label.setBorderStyle(FlxTextBorderStyle.OUTLINE_FAST);
 						label.alignment = "left";
 						
 						var btn:FlxUIButton = getColorStuffButton();

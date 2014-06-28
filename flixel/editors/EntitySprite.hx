@@ -8,7 +8,7 @@ import flixel.addons.ui.U;
 import flixel.animation.FlxAnimation;
 import flixel.FlxG;
 import flixel.FlxSprite;
-import flixel.util.FlxColorUtil;
+import flixel.util.FlxColor;
 import flixel.util.loaders.CachedGraphics;
 import openfl.Assets;
 
@@ -176,7 +176,7 @@ class EntitySprite extends FlxSprite
 					orig_color = G.skin.list_original_pixel_colors[i];
 					replace_color = G.skin.list_colors[i];
 					if(replace_color != 0x00000000){
-						trace("("+i+") replacing(" + FlxColorUtil.ARGBtoHexString(orig_color) + ") with(" + FlxColorUtil.ARGBtoHexString(replace_color) + ")");
+						trace("("+i+") replacing(" + FlxColor.fromInt(orig_color).toHexString() + ") with(" + FlxColor.fromInt(replace_color).toHexString() + ")");
 						baseCopy.threshold(baseCopy, baseCopy.rect, _flashPointZero, "==", orig_color, replace_color);
 					}
 				}
